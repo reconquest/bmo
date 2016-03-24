@@ -2,11 +2,11 @@ package main
 
 import "github.com/docopt/docopt-go"
 
-const usage = `k - missing tool for parsing structured text.
+const usage = `bmo - missing tool for parsing structured text.
 
 Usage:
-    k -h | --help
-    k (-b | --blocks) <awk_range_begin> <awk_range_end> <awk_condition>
+    bmo -h | --help
+    bmo (-b | --blocks) <awk_range_begin> <awk_range_end> <awk_condition>
 
 Options:
     -h --help    Show this help.
