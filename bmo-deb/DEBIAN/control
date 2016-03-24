@@ -4,6 +4,6 @@ Architecture: amd64
 Section: unknown
 Priority: extra
 Maintainer: Stanislav Seletskiy <s.seletskiy@gmail.com>
-Maintainer: Egor Kovetskiy <e.kovetskiy@gmail.com>
+Co-Maintainer: Egor Kovetskiy <e.kovetskiy@gmail.com>
 Homepage: https://github.com/reconquest/bmo
 Description: The missing tool for parsing structured text, like logs
