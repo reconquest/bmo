@@ -1,8 +1,9 @@
 #!/bin/bash
 
-tests:ensure bmo -b '/beginning/' '/finishing/' '1' <<EOF
+tests:ensure bmo -b '/beginning/' '/finishing/' '/aaa/ && /bbb/' <<EOF
 beginning 1
-aaa
+hhaaaxxx
+bbb
 finishing 1
 garbage
 
@@ -11,17 +12,14 @@ asdkjhasld
 garbage
 
 beginning 2
-b
+baaahhhhh
 b
 finishing 2
 EOF
 
 tests:assert-no-diff stdout <<EOF
 beginning 1
-aaa
+hhaaaxxx
+bbb
 finishing 1
-beginning 2
-b
-b
-finishing 2
 EOF

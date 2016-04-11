@@ -10,17 +10,20 @@ import (
 
 func parseBlocks(args map[string]interface{}) error {
 	var (
-		awkRangeBegin  = args["<awk_range_begin>"].(string)
-		awkRangeEnd    = args["<awk_range_end>"].(string)
-		awkCondition   = args["<awk_condition>"].(string)
-		awkNumberWords = awkBool(args["-w"])
+		awkRangeBegin     = args["<awk_range_begin>"].(string)
+		awkRangeEnd       = args["<awk_range_end>"].(string)
+		awkCondition      = args["<awk_condition>"].(string)
+		awkEnumerateWords = awkBool(args["-w"])
+
+		awkHandleRangeEndLine = awkBool(awkRangeBegin != awkRangeEnd)
 	)
 
 	vars := map[string]string{
-		"range_begin":  awkRangeBegin,
-		"range_end":    awkRangeEnd,
-		"condition":    awkCondition,
-		"number_words": awkNumberWords,
+		"range_begin":           awkRangeBegin,
+		"range_end":             awkRangeEnd,
+		"condition":             awkCondition,
+		"enumerate_words":       awkEnumerateWords,
+		"handle_range_end_line": awkHandleRangeEndLine,
 	}
 
 	var AWKProgram bytes.Buffer
