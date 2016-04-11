@@ -9,14 +9,21 @@ import (
 )
 
 func parseBlocks(args map[string]interface{}) error {
-	var AWKProgram bytes.Buffer
+	var (
+		awkRangeBegin  = args["<awk_range_begin>"].(string)
+		awkRangeEnd    = args["<awk_range_end>"].(string)
+		awkCondition   = args["<awk_condition>"].(string)
+		awkNumberWords = awkBool(args["-w"])
+	)
 
 	vars := map[string]string{
-		"RangeBegin": args["<awk_range_begin>"].(string),
-		"RangeEnd":   args["<awk_range_end>"].(string),
-		"Condition":  args["<awk_condition>"].(string),
+		"range_begin":  awkRangeBegin,
+		"range_end":    awkRangeEnd,
+		"condition":    awkCondition,
+		"number_words": awkNumberWords,
 	}
 
+	var AWKProgram bytes.Buffer
 	err := awkParseBlocks.Execute(&AWKProgram, vars)
 
 	if err != nil {
@@ -34,4 +41,13 @@ func parseBlocks(args map[string]interface{}) error {
 	}
 
 	return nil
+}
+
+func awkBool(raw interface{}) string {
+	booled, _ := raw.(bool)
+	if booled {
+		return "1"
+	}
+
+	return "0"
 }

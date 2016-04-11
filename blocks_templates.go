@@ -5,6 +5,8 @@ import (
 )
 
 var awkParseBlocks = template.Must(template.New("blocks").Parse(`
+	number_words = {{ .number_words }}
+
 	function handle_block_inner() {
 		if (block_contents) {
 			block_contents = block_contents "\n" $0
@@ -17,20 +19,20 @@ var awkParseBlocks = template.Must(template.New("blocks").Parse(`
 		current_line = $0
 
 		$0 = block_contents
-		if ({{ $.Condition }}) {
+		if ({{ $.condition }}) {
 			print block_contents
 		}
 
 		$0 = current_line
 	}
 
-	in_range && ({{ $.RangeEnd }}) {
+	in_range && ({{ $.range_end }}) {
 		handle_block_inner()
 		handle_block_end();
 		in_range = 0;
 	}
 
-	{{ $.RangeBegin }} {
+	{{ $.range_begin }} {
 		in_range = 1;
 		use_block = 0;
 		block_contents = ""

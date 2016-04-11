@@ -15,7 +15,7 @@ Options:
     -b --blocks  Match blocks using <awk_range_begin>, <awk_range_end> and
                  output it only if <awk_condition> is true for at least on line
                  in the block.
-	-v           Print words number.
+    -w           Print words number.
     -h --help    Show this help.
     --version    Show version.
 `
