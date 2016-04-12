@@ -18,6 +18,8 @@ Usage:
 
 Options:
     -b --blocks     Match blocks using <awk_range_begin> and <awk_range_end>.
+                    If <awk_range_end> is omitted, than <awk_range_begin> will
+                    be used as blocks delimiter.
     -v --var        Match variable <name> using <expression>.
     -s --sort       Sort blocks by <var> variable.
     -c --condition  Use blocks only if <awk_condition> is true.

@@ -12,11 +12,10 @@ import (
 func parseBlocks(args map[string]interface{}) error {
 	var (
 		awkRangeBegin   = args["<awk_range_begin>"].(string)
-		awkRangeEnd     = args["<awk_range_end>"].(string)
+		awkRangeEnd, _  = args["<awk_range_end>"].(string)
 		awkCondition, _ = args["<awk_condition>"].(string)
 
-		awkEnumerateWords     = awkBool(args["-w"])
-		awkHandleRangeEndLine = awkBool(awkRangeBegin != awkRangeEnd)
+		awkEnumerateWords = awkBool(args["-w"])
 
 		awkVarNames       = args["<name>"].([]string)
 		awkVarExpressions = args["<expression>"].([]string)
@@ -30,6 +29,12 @@ func parseBlocks(args map[string]interface{}) error {
 	for i, name := range awkVarNames {
 		awkVars[name] = awkVarExpressions[i]
 	}
+
+	if awkRangeEnd == "" {
+		awkRangeEnd = awkRangeBegin
+	}
+
+	awkHandleRangeEndLine := awkBool(awkRangeBegin != awkRangeEnd)
 
 	vars := map[string]interface{}{
 		"range_begin":           awkRangeBegin,
