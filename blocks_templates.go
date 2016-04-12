@@ -5,7 +5,7 @@ import (
 )
 
 var awkParseBlocks = template.Must(template.New("blocks").Parse(`
-{{ range $name, $expression := .vars }}
+{{ range $name, $expression := $.vars }}
 function extract_var_{{ $name }}() {
 	{{ $expression }}
 
@@ -30,12 +30,12 @@ function enumerate_words(line) {
 function handle_block_inner() {
 	_line = $0
 
-	{{ range $name, $_ := .vars }}
+	{{ range $name, $_ := $.vars }}
 	if (!{{ $name }}) {
 		{{ $name }} = extract_var_{{ $name }}()
 	}{{ end }}
 
-	if ({{ .enumerate_words }}) {
+	if ({{ $.enumerate_words }}) {
 		_line = enumerate_words(_line) "\n" _line;
 	}
 
@@ -51,14 +51,14 @@ function handle_block_end() {
 
 	$0 = _block_contents;
 	if ({{ $.condition }}) {
-		print;
+		print {{ $.format }};
 	}
 
 	$0 = current_line;
 }
 
 _in_range && ({{ $.range_end }}) {
-	if ({{ .handle_range_end_line }}) {
+	if ({{ $.handle_range_end_line }}) {
 		handle_block_inner()
 	}
 	handle_block_end();
@@ -70,7 +70,7 @@ _in_range && ({{ $.range_end }}) {
 	_use_block = 0;
 	_block_contents = ""
 
-	{{ range $name, $_ := .vars }}
+	{{ range $name, $_ := $.vars }}
 	{{ $name }} = 0;{{ end }}
 }
 

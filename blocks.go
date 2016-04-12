@@ -11,15 +11,16 @@ import (
 
 func parseBlocks(args map[string]interface{}) error {
 	var (
-		awkRangeBegin     = args["<awk_range_begin>"].(string)
-		awkRangeEnd       = args["<awk_range_end>"].(string)
-		awkCondition      = args["<awk_condition>"].(string)
-		awkEnumerateWords = awkBool(args["-w"])
+		awkRangeBegin = args["<awk_range_begin>"].(string)
+		awkRangeEnd   = args["<awk_range_end>"].(string)
+		awkCondition  = args["<awk_condition>"].(string)
 
+		awkEnumerateWords     = awkBool(args["-w"])
 		awkHandleRangeEndLine = awkBool(awkRangeBegin != awkRangeEnd)
 
 		awkVarNames       = args["<name>"].([]string)
 		awkVarExpressions = args["<expression>"].([]string)
+		awkFormat, _      = args["<format>"].(string)
 
 		debug = args["--debug"].(bool)
 	)
@@ -36,6 +37,7 @@ func parseBlocks(args map[string]interface{}) error {
 		"enumerate_words":       awkEnumerateWords,
 		"handle_range_end_line": awkHandleRangeEndLine,
 		"vars":                  awkVars,
+		"format":                awkFormat,
 	}
 
 	var awkProgram bytes.Buffer
@@ -45,7 +47,7 @@ func parseBlocks(args map[string]interface{}) error {
 	}
 
 	if debug {
-		fmt.Fprintln(os.Stderr, awkProgram)
+		fmt.Fprintln(os.Stderr, awkProgram.String())
 	}
 
 	command := exec.Command("awk", awkProgram.String())

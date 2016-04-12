@@ -9,6 +9,7 @@ var (
 Usage:
     bmo [-w] (-b <awk_range_begin> <awk_range_end> <awk_condition>)
             [(-v <name> <expression>)]...
+            [(-f <format>)]
               [--debug]
     bmo -h | --help
     bmo --version
