@@ -1,6 +1,6 @@
 #!/bin/bash
 
-tests:ensure bmo -w -b '/begin/' '/end/' '1' <<EOF
+tests:ensure bmo -w -b '/begin/' '/end/' <<EOF
 begin
 bbbbbb 		blah dddd ff h
 	tttttt ttt  ttt ttt ttt ttt ttt ttt ttt ttt ttt ttt ttt

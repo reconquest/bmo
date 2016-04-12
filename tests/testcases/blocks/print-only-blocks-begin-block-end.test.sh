@@ -1,6 +1,6 @@
 #!/bin/bash
 
-tests:ensure bmo -b '/beginning/' '/finishing/' '1' <<EOF
+tests:ensure bmo -b '/beginning/' '/finishing/' <<EOF
 beginning 1
 aaa
 finishing 1

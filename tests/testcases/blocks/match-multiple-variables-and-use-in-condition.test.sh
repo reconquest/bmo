@@ -1,9 +1,10 @@
 #!/bin/bash
 
 tests:ensure bmo \
-    -b '/begin/' '/end/' "time == 300 && read_ops == 500" \
+    -b '/begin/' '/end/' \
     -v 'time' 'if (/query_time/) { return int(\$2); }' \
-    -v 'read_ops' 'if (/read_ops/) { return int(\$4); }' <<EOF
+    -v 'read_ops' 'if (/read_ops/) { return int(\$4); }' \
+    -c "time == 300 && read_ops == 500" <<EOF
 begin 1
 bar
 query_time 100

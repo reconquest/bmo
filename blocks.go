@@ -11,9 +11,9 @@ import (
 
 func parseBlocks(args map[string]interface{}) error {
 	var (
-		awkRangeBegin = args["<awk_range_begin>"].(string)
-		awkRangeEnd   = args["<awk_range_end>"].(string)
-		awkCondition  = args["<awk_condition>"].(string)
+		awkRangeBegin   = args["<awk_range_begin>"].(string)
+		awkRangeEnd     = args["<awk_range_end>"].(string)
+		awkCondition, _ = args["<awk_condition>"].(string)
 
 		awkEnumerateWords     = awkBool(args["-w"])
 		awkHandleRangeEndLine = awkBool(awkRangeBegin != awkRangeEnd)

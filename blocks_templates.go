@@ -50,7 +50,7 @@ function handle_block_end() {
 	current_line = $0;
 
 	$0 = _block_contents;
-	if ({{ $.condition }}) {
+	if ({{ if $.condition }}{{ $.condition }}{{ else }}1{{ end }}) {
 		_output = {{ if $.format }}{{ $.format }}{{ else }}$0{{end}};
 		{{ if $.sort }}
 		_data[{{ $.sort }}] = _output;{{ else }}

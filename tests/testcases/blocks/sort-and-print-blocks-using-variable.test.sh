@@ -1,7 +1,7 @@
 #!/bin/bash
 
 tests:ensure bmo \
-    -b '/begin/' '/end/' '1' \
+    -b '/begin/' '/end/' \
     -v 'time' 'if (/query_time/) { return int(\$2); }' \
     -s 'time' <<EOF
 begin 1

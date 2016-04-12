@@ -3,12 +3,13 @@ package main
 import "github.com/docopt/docopt-go"
 
 var (
-	version = "1.0"
+	version = "3.0"
 	usage   = `bmo - missing tool for parsing structured text.
 
 Usage:
-    bmo [-w] (-b <awk_range_begin> <awk_range_end> <awk_condition>)
+    bmo [-w] (-b <awk_range_begin> [<awk_range_end>])
             [(-v <name> <expression>)]...
+            [(-c <awk_condition>)]
             [(-f <format>)]
             [(-s <var>)]
             [--debug]
@@ -16,15 +17,14 @@ Usage:
     bmo --version
 
 Options:
-    -b --blocks  Match blocks using <awk_range_begin>, <awk_range_end> and
-                 output it only if <awk_condition> is true for at least on line
-                 in the block.
-    -v --var     Match variable <name> using <expression>.
-    -s --sort    Sort blocks by <var> variable.
-    -w           Enumerate words when printing a line.
-    --debug      Debug mode.
-    -h --help    Show this help.
-    --version    Show version.
+    -b --blocks     Match blocks using <awk_range_begin> and <awk_range_end>.
+    -v --var        Match variable <name> using <expression>.
+    -s --sort       Sort blocks by <var> variable.
+    -c --condition  Use blocks only if <awk_condition> is true.
+    -w              Enumerate words when printing a line.
+    --debug         Debug mode.
+    -h --help       Show this help.
+    --version       Show version.
 `
 )
 
