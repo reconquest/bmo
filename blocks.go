@@ -21,6 +21,7 @@ func parseBlocks(args map[string]interface{}) error {
 		awkVarNames       = args["<name>"].([]string)
 		awkVarExpressions = args["<expression>"].([]string)
 		awkFormat, _      = args["<format>"].(string)
+		awkSort, _        = args["<var>"].(string)
 
 		debug = args["--debug"].(bool)
 	)
@@ -38,6 +39,7 @@ func parseBlocks(args map[string]interface{}) error {
 		"handle_range_end_line": awkHandleRangeEndLine,
 		"vars":                  awkVars,
 		"format":                awkFormat,
+		"sort":                  awkSort,
 	}
 
 	var awkProgram bytes.Buffer

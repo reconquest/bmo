@@ -51,7 +51,10 @@ function handle_block_end() {
 
 	$0 = _block_contents;
 	if ({{ $.condition }}) {
-		print {{ $.format }};
+		_output = {{ if $.format }}{{ $.format }}{{ else }}$0{{end}};
+		{{ if $.sort }}
+		_data[{{ $.sort }}] = _output;{{ else }}
+		print _output;{{ end }}
 	}
 
 	$0 = current_line;
@@ -77,4 +80,13 @@ _in_range && ({{ $.range_end }}) {
 _in_range {
 	handle_block_inner()
 }
+
+{{ if $.sort }}
+END {
+	count = asorti(_data, _sorted_keys)
+	for (i =  1; i <= count; i++) {
+		print _data[_sorted_keys[i]]
+	}
+}
+{{ end }}
 `))

@@ -10,7 +10,8 @@ Usage:
     bmo [-w] (-b <awk_range_begin> <awk_range_end> <awk_condition>)
             [(-v <name> <expression>)]...
             [(-f <format>)]
-              [--debug]
+            [(-s <var>)]
+            [--debug]
     bmo -h | --help
     bmo --version
 
@@ -19,6 +20,7 @@ Options:
                  output it only if <awk_condition> is true for at least on line
                  in the block.
     -v --var     Match variable <name> using <expression>.
+    -s --sort    Sort blocks by <var> variable.
     -w           Enumerate words when printing a line.
     --debug      Debug mode.
     -h --help    Show this help.
