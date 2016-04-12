@@ -2,6 +2,7 @@ package main
 
 import (
 	"bytes"
+	"fmt"
 	"os"
 	"os/exec"
 
@@ -16,24 +17,38 @@ func parseBlocks(args map[string]interface{}) error {
 		awkEnumerateWords = awkBool(args["-w"])
 
 		awkHandleRangeEndLine = awkBool(awkRangeBegin != awkRangeEnd)
+
+		awkVarNames       = args["<name>"].([]string)
+		awkVarExpressions = args["<expression>"].([]string)
+
+		debug = args["--debug"].(bool)
 	)
 
-	vars := map[string]string{
+	awkVars := map[string]string{}
+	for i, name := range awkVarNames {
+		awkVars[name] = awkVarExpressions[i]
+	}
+
+	vars := map[string]interface{}{
 		"range_begin":           awkRangeBegin,
 		"range_end":             awkRangeEnd,
 		"condition":             awkCondition,
 		"enumerate_words":       awkEnumerateWords,
 		"handle_range_end_line": awkHandleRangeEndLine,
+		"vars":                  awkVars,
 	}
 
-	var AWKProgram bytes.Buffer
-	err := awkParseBlocks.Execute(&AWKProgram, vars)
-
+	var awkProgram bytes.Buffer
+	err := awkParseBlocks.Execute(&awkProgram, vars)
 	if err != nil {
-		return hierr.Errorf(err, "can't prepare AWK AWKProgram")
+		return hierr.Errorf(err, "can't prepare awk program")
 	}
 
-	command := exec.Command("awk", AWKProgram.String())
+	if debug {
+		fmt.Fprintln(os.Stderr, awkProgram)
+	}
+
+	command := exec.Command("awk", awkProgram.String())
 	command.Stdin = os.Stdin
 	command.Stdout = os.Stdout
 	command.Stderr = os.Stderr
