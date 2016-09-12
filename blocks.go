@@ -6,7 +6,7 @@ import (
 	"os"
 	"os/exec"
 
-	"github.com/seletskiy/hierr"
+	"github.com/reconquest/hierr-go"
 )
 
 func parseBlocks(args map[string]interface{}) error {
