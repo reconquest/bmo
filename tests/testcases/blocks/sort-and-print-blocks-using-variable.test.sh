@@ -2,7 +2,7 @@
 
 tests:ensure bmo \
     -b '/begin/' '/end/' \
-    -v 'time' 'if (/query_time/) { return int(\$2); }' \
+    -v 'time'='if (/query_time/) { return int(\$2); }' \
     -s 'time' <<EOF
 begin 1
 query_time 100

@@ -2,8 +2,8 @@
 
 tests:ensure bmo \
     -b '/begin/' '/end/' \
-    -v 'time' 'if (/query_time/) { return int(\$2); }' \
-    -v 'read_ops' 'if (/read_ops/) { return int(\$4); }' \
+    -v 'time'='if (/query_time/) { return int(\$2); }' \
+    -v 'read_ops'='if (/read_ops/) { return int(\$4); }' \
     -f '\"time:\" time \"\n\" \"read_ops:\" read_ops' <<EOF
 begin 1
 bar
