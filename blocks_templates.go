@@ -88,5 +88,11 @@ END {
 		print _data[_sorted_keys[i]]
 	}
 }
+{{ else }}
+END {
+	if (_in_range) {
+		handle_block_end();
+	}
+}
 {{ end }}
 `))
