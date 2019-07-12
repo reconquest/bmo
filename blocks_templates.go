@@ -83,7 +83,7 @@ _in_range {
 
 {{ if $.sort }}
 END {
-	count = asorti(_data, _sorted_keys)
+	count = asorti(_data, _sorted_keys{{ if $.sort_how }}, "{{ $.sort_how }}"{{ end }})
 	for (i =  1; i <= count; i++) {
 		print _data[_sorted_keys[i]]
 	}
