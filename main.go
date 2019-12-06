@@ -3,7 +3,7 @@ package main
 import "github.com/docopt/docopt-go"
 
 var (
-	version = "3.0"
+	version = "3.1"
 	usage   = `bmo - missing tool for parsing structured text.
 
 Usage:
@@ -25,6 +25,7 @@ Options:
                      The <how> will be passed as third param to asorti().
                      Tip: man gawk and find PROCINFO["sorted_in"]
     -c --condition  Use blocks only if <awk_condition> is true.
+	-f --format     Output blocks using specified format.
     -w              Enumerate words when printing a line.
     --debug         Debug mode.
     -h --help       Show this help.
