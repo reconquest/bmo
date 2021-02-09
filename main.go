@@ -17,19 +17,19 @@ Usage:
     bmo --version
 
 Options:
-    -b --blocks     Match blocks using <awk_range_begin> and <awk_range_end>.
-                     If <awk_range_end> is omitted, than <awk_range_begin> will
-                     be used as blocks delimiter.
-    -v --var        Match variable <name> using <expression>.
-    -s --sort       Sort blocks by <var> variable using <how> func.
-                     The <how> will be passed as third param to asorti().
-                     Tip: man gawk and find PROCINFO["sorted_in"]
-    -c --condition  Use blocks only if <awk_condition> is true.
-	-f --format     Output blocks using specified format.
-    -w              Enumerate words when printing a line.
-    --debug         Debug mode.
-    -h --help       Show this help.
-    --version       Show version.
+  -b --blocks     Match blocks using <awk_range_begin> and <awk_range_end>.
+                   If <awk_range_end> is omitted, than <awk_range_begin> will
+                   be used as blocks delimiter.
+  -v --var        Match variable <name> using <expression>.
+  -s --sort       Sort blocks by <var> variable using <how> func.
+                   The <how> will be passed as third param to asorti().
+                   Tip: man gawk and find PROCINFO["sorted_in"]
+  -c --condition  Use blocks only if <awk_condition> is true.
+  -f --format     Output blocks using specified format.
+  -w              Enumerate words when printing a line.
+  --debug         Debug mode.
+  -h --help       Show this help.
+  --version       Show version.
 `
 )
 
