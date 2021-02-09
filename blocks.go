@@ -22,6 +22,7 @@ func parseBlocks(args map[string]interface{}) error {
 		awkFormat, _      = args["<format>"].(string)
 		awkSort, _        = args["<var>"].(string)
 		awkSortHow, _     = args["<how>"].(string)
+		awkAddNewLine     = args["-n"].(bool)
 
 		debug = args["--debug"].(bool)
 	)
@@ -47,6 +48,7 @@ func parseBlocks(args map[string]interface{}) error {
 		"format":                awkFormat,
 		"sort":                  awkSort,
 		"sort_how":              awkSortHow,
+		"add_new_line":          awkAddNewLine,
 	}
 
 	var awkProgram bytes.Buffer

@@ -54,7 +54,9 @@ function handle_block_end() {
 		_output = {{ if $.format }}{{ $.format }}{{ else }}$0{{end}};
 		{{ if $.sort }}
 		_data[{{ $.sort }}] = _output;{{ else }}
-		print _output;{{ end }}
+		print _output;
+		{{ if $.add_new_line }}printf "\n";{{ end }}
+		{{ end }}
 	}
 
 	$0 = current_line;

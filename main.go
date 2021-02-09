@@ -7,7 +7,7 @@ var (
 	usage   = `bmo - missing tool for parsing structured text.
 
 Usage:
-    bmo [-w] (-b <awk_range_begin> [<awk_range_end>])
+    bmo [-w] [-n] (-b <awk_range_begin> [<awk_range_end>])
             [(-v <name> <expression>)]...
             [(-c <awk_condition>)]
             [(-f <format>)]
@@ -27,6 +27,7 @@ Options:
   -c --condition  Use blocks only if <awk_condition> is true.
   -f --format     Output blocks using specified format.
   -w              Enumerate words when printing a line.
+  -n              Add a new line after each block.
   --debug         Debug mode.
   -h --help       Show this help.
   --version       Show version.
